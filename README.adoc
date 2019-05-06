@@ -1,0 +1,14 @@
+= GraalVM native generation
+
+== Build it
+----
+mvn clean install
+docker build -t graalvm-java-native-example .
+----
+
+
+== Test it
+
+----
+docker run -it graalvm-java-native-example
+----
