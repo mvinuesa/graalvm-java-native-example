@@ -1,5 +1,6 @@
-FROM oracle/graalvm-ce:1.0.0-rc16 AS build
+FROM oracle/graalvm-ce:20.0.0-java8 AS build
 WORKDIR /graalvm-java-native-example
+RUN gu install native-image
 ADD target/graalvm-java-native-example-1.0-SNAPSHOT.jar .
 RUN jar -xvf graalvm-java-native-example-1.0-SNAPSHOT.jar; \
     native-image -H:+ReportUnsupportedElementsAtRuntime --allow-incomplete-classpath --report-unsupported-elements-at-runtime -Dfile.encoding=UTF-8 -cp . com.mvinuesa.graalvm.GraalVMJavaNativeExample; \
